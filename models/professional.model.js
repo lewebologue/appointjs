@@ -1,11 +1,10 @@
 const DataTypes = require('sequelize');
 const db = require('../config/db');
 
-const Professional = db.define('User', {
+const Professionnal = db.define('Professionnal', {
     id: {
-        type: DataTypes.UUIDV4,
-        primaryKey: true,
-        allowNull: false,
+        type: DataTypes.UUID,
+        primaryKey: true
     },
     firstname: {
         type: DataTypes.STRING,
@@ -20,10 +19,6 @@ const Professional = db.define('User', {
         allowNull: false,
         unique: true
     },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     password: {
         type: DataTypes.STRING,
         allowNull: false
@@ -37,12 +32,12 @@ const Professional = db.define('User', {
         allowNull: false
     },
     postalcode: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         length: 5
     },
     phone: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         length: 10
     },
@@ -54,4 +49,4 @@ const Professional = db.define('User', {
     freezeTableName : true,
 });
 
-module.exports = Professional;
+module.exports = Professionnal;

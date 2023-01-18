@@ -1,11 +1,10 @@
-const { DataTypes } = require('sequelize');
+const DataTypes = require('sequelize');
 const db = require('../config/db');
 
 const Appointement = db.define('Appointement', {
     id: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
         primaryKey: true,
-        allowNull: false,
     },
     date: {
         type: DataTypes.DATE,

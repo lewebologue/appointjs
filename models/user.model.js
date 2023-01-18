@@ -3,9 +3,8 @@ const db = require('../config/db');
 
 const User = db.define('User', {
     id: {
-        type: DataTypes.UUIDV4,
-        primaryKey: true,
-        allowNull: false,
+        type: DataTypes.UUID,
+        primaryKey: true
     },
     firstname: {
         type: DataTypes.STRING,
@@ -33,21 +32,21 @@ const User = db.define('User', {
         allowNull: true
     },
     postalcode: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: true,
         length: 5
     },
     phone: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.STRING,
         allowNull: false,
         length: 10
     },
     upcomingEvents: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true
     },
     pastEvents: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true
     },
 },{

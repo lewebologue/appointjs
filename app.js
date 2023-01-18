@@ -1,14 +1,8 @@
 const express = require('express');
-const path = require('path');
 
-//TODO
-//INSERT ROUTE BELOW
-//EX: const router = require('./routes/index.js');
-//Or each router separately
-//EX: const userRouter = require('./routes/user.router);
+const routes = require('./routes/index.router');
 
 const app = express();
-
 
 const InitDB = require('./utils/initdb');
 
@@ -25,11 +19,12 @@ app.use((req, res, next) => {
 InitDB().then(() => {
     app.use(express.json());
 
+    app.use('/api', routes);
     //TODO: Primary API url
     //X: app.use('/api/user', userRoutes);
     
     })
-    .catch((error) => { console.log("error" + error);
+    .catch((error) => { console.log("DB init failed", error, error.message)
 });
 
 
