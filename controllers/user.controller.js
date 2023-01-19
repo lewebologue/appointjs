@@ -1,4 +1,4 @@
-const User = require('../models/professional.model');
+const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const AES = require('../middlewares/encrypt.middleware');
@@ -22,11 +22,7 @@ exports.signup = (req, res, next) => {
         return res.status(400).json({ error: 'Password not allowed' });
     }
     const cryptedEmail = AES.encrypt(email);
-    User.findOne({
-        where: {
-            email: cryptedEmail
-        }
-    })
+    User.findOne({ where: { email: cryptedEmail }})
         .then(user => {
             if (user) {
                 return res.status(400).json({ error: 'Email already used' });
@@ -34,8 +30,8 @@ exports.signup = (req, res, next) => {
             const salt = bcrypt.genSaltSync(10);
             const hashPassword = bcrypt.hashSync(password, salt);
             User.create({
-                firstName: firstname,
-                lastName: lastname,
+                firstname: firstname,
+                lastname: lastname,
                 email: cryptedEmail,
                 password: hashPassword,
                 adress: adress,
@@ -76,7 +72,7 @@ exports.login = (req, res, next) =>{
 exports.updateUser = (req, res, next) => {
     User.findOne({ where: { id: req.params.id } })
         .then((user) => {
-            if (user.id === req.token.userId || req.token.isAdmin) {
+            if (user.id === req.token.userId) {
                 const {
                     firstname,
                     lastname,
