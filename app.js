@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 InitDB().then(() => {
     app.use(express.json());
 
-    app.use('/api/users', routes);
+    app.use('/api', routes);
     //TODO: Primary API url
     //X: app.use('/api/user', userRoutes);
     
