@@ -22,6 +22,7 @@
     "aes-encryption": "1.0.4",
     "bcrypt": "5.1.0",
     "crypto-js": "4.1.1",
+    "date-fns": "^2.29.3",
     "dotenv": "16.0.3",
     "express": "4.18.2",
     "express-rate-limit": "6.7.0",
