@@ -7,12 +7,12 @@ const Appointement = db.define('Appointement', {
         primaryKey: true,
     },
     date: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: true
     },
     time: {
-        type: DataTypes.TIME,
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: true
     },
 },{
     freezeTableName : true,
