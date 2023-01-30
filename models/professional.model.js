@@ -45,6 +45,11 @@ const Professionnal = db.define('Professionnal', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        default: 'professional'
+    }
 },{
     freezeTableName : true,
 });

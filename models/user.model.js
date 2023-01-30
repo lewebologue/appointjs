@@ -50,6 +50,11 @@ const User = db.define('User', {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true
     },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        default: 'user'
+    }
 },{
     freezeTableName : true,
 });

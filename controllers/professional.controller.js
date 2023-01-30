@@ -64,7 +64,10 @@ exports.login = (req, res, next) =>{
             res.status(202).json({
                 ProfessionalsId: Professionals.id,
                 isAdmin: Professionals.isAdmin,
-                token: jwt.sign({ ProfessionalsId: Professionals.id },
+                token: jwt.sign({
+                    ProfessionalsId: Professionals.id,
+                    satus: Professionals.status
+                },
                 'process.env.TOKEN',
                 { expiresIn: '24h' })
             });
